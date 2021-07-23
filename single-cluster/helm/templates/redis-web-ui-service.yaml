@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-web-ui
+  labels:
+    app: rebrow
+    tier: redis-web-ui
+spec:
+  type: "{{ .Values.serviceType }}"
+  ports:
+  - port: 5001
+  selector:
+    app: rebrow
+    tier: redis-web-ui

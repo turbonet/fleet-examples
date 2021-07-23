@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-web-ui
+spec:
+  selector:
+    matchLabels:
+      app: rebrow
+      tier: redis-web-ui
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      labels:
+        app: rebrow
+        tier: redis-web-ui
+    spec:
+      containers:
+      - name: rebrow
+        image: marian/rebrow
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 5001
